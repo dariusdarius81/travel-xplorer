@@ -1,0 +1,11 @@
+<div class="home-container">
+  <h2 div class="title">Welcome to Our Website!</h2>
+
+  <div class="buttons-container">
+    <button (click)="goToLogin()">Login</button>
+    <button (click)="goToRegister()" [disabled]="isRegisterButtonDisabled()">
+      Register
+    </button>
+    <button (click)="logOut()">Log Out</button>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<form [formGroup]="tripForm">
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Beginning</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        formControlName="beginning"
+        placeholder="Enter beginning"
+      />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('beginning')!.invalid &&
+          (tripForm.get('beginning')!.dirty ||
+            tripForm.get('beginning')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('beginning')?.hasError('required')">
+          Beginning is required.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Destination</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        formControlName="destination"
+        placeholder="Enter destination"
+      />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('destination')!.invalid &&
+          (tripForm.get('destination')!.dirty ||
+            tripForm.get('destination')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('destination')?.hasError('required')">
+          Destination is required.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Distance</nz-form-label>
+    <nz-form-control>
+      <input nz-input nz-input-number formControlName="distance" [min]="0" />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('distance')!.invalid &&
+          (tripForm.get('distance')!.dirty || tripForm.get('distance')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('distance')?.hasError('required')">
+          Distance is required and must be a positive number.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('distance')?.hasError('min')">
+          Distance must be greater than 0.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('distance')?.hasError('number')">
+          Distance must be a valid number.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Time</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        nz-input-number
+        formControlName="time"
+        [min]="0"
+        [max]="23"
+      />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('time')!.invalid &&
+          (tripForm.get('time')!.dirty || tripForm.get('time')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('time')?.hasError('required')">
+          Time is required.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('time')?.hasError('max')">
+          Time must be less than or equal to 23.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('time')?.hasError('number')">
+          Time must be a valid number.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Difficulty</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        formControlName="difficulty"
+        placeholder="Enter difficulty"
+      />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('difficulty')!.invalid &&
+          (tripForm.get('difficulty')!.dirty ||
+            tripForm.get('difficulty')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('difficulty')?.hasError('required')">
+          Difficulty is required.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzRequired]="true">Rating</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        nz-input-number
+        formControlName="rating"
+        [min]="0"
+        [max]="5"
+      />
+      <div
+        nz-form-explain
+        *ngIf="
+          tripForm.get('rating')!.invalid &&
+          (tripForm.get('rating')!.dirty || tripForm.get('rating')!.touched)
+        "
+      >
+        <ng-container *ngIf="tripForm.get('rating')?.hasError('required')">
+          Rating is required.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('rating')?.hasError('max')">
+          Rating must be less than or equal to 4.
+        </ng-container>
+        <ng-container *ngIf="tripForm.get('rating')?.hasError('number')">
+          Rating must be a valid number.
+        </ng-container>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>

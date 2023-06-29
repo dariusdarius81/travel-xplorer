@@ -1,0 +1,59 @@
+.header {
+  background-color: rgb(11, 50, 11);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 30px;
+  padding: 10px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mountain-icon {
+  color: #333;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  margin-left: 10px;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 16px;
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff4f4f;
+}
+
+button:active {
+  background-color: #ff3333;
+}

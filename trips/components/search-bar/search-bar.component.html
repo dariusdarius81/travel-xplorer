@@ -1,0 +1,13 @@
+<div class="header">
+  <h1 class="title">Discover the Mountains</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchTrip"
+      placeholder="Search"
+      (ngModelChange)="onSearch()"
+    />
+    <button nz-button nzType="primary" (click)="onSearch()">Search</button>
+  </div>
+</div>

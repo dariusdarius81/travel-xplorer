@@ -1,0 +1,102 @@
+<div class="background">
+  <div class="register-container">
+    <h2 class="registration-title">Register</h2>
+
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="register()"
+      class="registration-form"
+    >
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control" />
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['required']"
+        >
+          Email is required.
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']"
+        >
+          Invalid email format.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['required']"
+        >
+          Password is required.
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['minlength']"
+        >
+          Password should have at least 6 characters.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Password Confirmation</label>
+        <input
+          type="password"
+          formControlName="passwordConfirmation"
+          class="form-control"
+        />
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('passwordConfirmation')?.touched && registrationForm.get('passwordConfirmation')?.errors?.['required']"
+        >
+          Password Confirmation is required.
+        </div>
+
+        <div
+          class="error-message"
+          *ngIf="
+            registrationForm.hasError('passwordMismatch') &&
+            registrationForm.get('passwordConfirmation')?.touched
+          "
+        >
+          Password and Password Confirmation do not match.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" />
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.errors?.['required']"
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Surname</label>
+        <input type="text" formControlName="surname" class="form-control" />
+        <div
+          class="error-message"
+          *ngIf="registrationForm.get('surname')?.touched && registrationForm.get('surname')?.errors?.['required']"
+        >
+          Surname is required.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="registrationForm.invalid">
+        Register
+      </button>
+    </form>
+  </div>
+</div>

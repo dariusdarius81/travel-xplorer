@@ -1,0 +1,63 @@
+<div class="main-container">
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+
+  <div class="header-container">
+    <button class="add-button" nz-button nzType="primary" (click)="addItem()">
+      <span nz-icon nzType="appstore-add" nzTheme="outline"></span>
+      Add
+    </button>
+
+    <h1>Select a property from the table to sort the trips according to it</h1>
+  </div>
+
+  <nz-table
+    #table
+    [nzData]="sortedData"
+    [nzFrontPagination]="true"
+    [nzPageSize]="8"
+  >
+    <thead>
+      <tr>
+        <th nzWidth="150px">ID</th>
+        <th nzWidth="150px">Beginning</th>
+        <th nzWidth="150px">Destination</th>
+        <th nzWidth="150px" (click)="sortTable('distance')">Distance</th>
+        <th nzWidth="150px" (click)="sortTable('time')">Time</th>
+        <th nzWidth="150px">Difficulty</th>
+        <th nzWidth="150px" (click)="sortTable('rating')">Rating</th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="sortedData as trips">
+      <tr *ngFor="let item of trips">
+        <td (click)="openModal(item)">{{ item.id }}</td>
+        <td>{{ item.beginning }}</td>
+        <td>{{ item.destination }}</td>
+        <td>{{ item.distance }} km</td>
+        <td>{{ item.time }} hours</td>
+        <td>{{ item.difficulty }}</td>
+        <td>
+          <nz-rate [(ngModel)]="item.rating" [nzAllowHalf]="true" [nzCount]="4">
+            <ng-template #starTemplate let-index> ★ </ng-template>
+          </nz-rate>
+        </td>
+        <td>
+          <i
+            nz-icon
+            nzType="edit"
+            nzTheme="outline"
+            (click)="editItem(item)"
+          ></i>
+        </td>
+        <td>
+          <i
+            nz-icon
+            nzType="delete"
+            nzTheme="outline"
+            (click)="deleteItem(item)"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
